@@ -59,7 +59,7 @@ with open(file_write_path,"w") as outfile:
         f"-------------------------\n"
         f"Total Votes: {total_votes:,}\n"
         f"-------------------------\n"
-        f"County Votes:\n")
+        f"\nCounty Votes:\n")
     print(county_results, end="")
     # Save the final vote count to the text file.
     outfile.write(county_results)
@@ -77,7 +77,7 @@ with open(file_write_path,"w") as outfile:
             highest_county_count=county_votes
             highest_county_name=county_name
     winning_county_summary=(
-            f"-----------------------------\n"
+            f"\n-----------------------------\n"
             f"Largest County Turnout: {highest_county_name}\n"
             # f"Winning vote count: {highest_county_count:,}\n"
             # f"Winning Percentage: {highest_county_percentage:.1f}%\n"
