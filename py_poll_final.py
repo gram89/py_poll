@@ -2,7 +2,7 @@
 import csv
 import os
 #Get the current working directory to understand the file path
-print (os.getcwd())
+#print (os.getcwd())
 #Get the filepath to the csv file
 file_open_path = os.path.join("Week 3","Asynchronous","py_poll","Resources","election_results.csv")
 #initialise the counter
@@ -34,32 +34,42 @@ with open(file_open_path) as election_data:
             candidate_votes[candidate_name]=0
         #add a vote to the candidate's count
         candidate_votes[candidate_name]+=1
+#getting ready for the text file
+file_write_path = os.path.join("Week 3","Asynchronous","py_poll","Analysis","election_analysis.txt")
+with open(file_write_path,"w") as outfile:
+    election_results = (
+        f"\nElection Results\n"
+        f"-------------------------\n"
+        f"Total Votes: {total_votes:,}\n"
+        f"-------------------------\n")
+    print(election_results, end="")
+    # Save the final vote count to the text file.
+    outfile.write(election_results)
+    for candidate_name in candidate_votes:
+        votes = candidate_votes[candidate_name]
+        vote_percentage=(votes/total_votes)*100
+        #print all candidate names, vote count and vote percentage
+        candidate_results=(f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
+        print(candidate_results)
+        outfile.write(candidate_results)
+        #print(f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})" )
+        #find the winning candidate and vote count by checking if winning votes is greater than zero
+        if (votes>winning_vote_count) and (vote_percentage>winning_vote_percentage):
+            winning_vote_percentage=vote_percentage
+            winning_vote_count=votes
+            winning_candidate=candidate_name
+    winning_candidate_summary=(
+            f"-----------------------------\n"
+            f"Winner:{winning_candidate}\n"
+            f"Winning vote count: {winning_vote_count:,}\n"
+            f"Winning Percentage: {winning_vote_percentage:.1f}%\n"
+            f"-------------------------------"
+        )
+    print(winning_candidate_summary)
+    outfile.write(winning_candidate_summary)
+    # print (total_votes)
+    # print(candidate_options)
+    # print (candidate_votes)
 
-for candidate_name in candidate_votes:
-    votes = candidate_votes[candidate_name]
-    vote_percentage=(votes/total_votes)*100
-    #print all candidate names, vote count and vote percentage
-    print(f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})" )
-    #find the winning candidate and vote count by checking if winning votes is greater than zero
-    if (votes>winning_vote_count) and (vote_percentage>winning_vote_percentage):
-        winning_vote_percentage=vote_percentage
-        winning_vote_count=votes
-        winning_candidate=candidate_name
-winning_candidate_summary=(
-        f"-----------------------------\n"
-        f"Winner:{winning_candidate}\n"
-        f"Winning vote count: {winning_vote_count:,}\n"
-        f"Winning Percentage: {winning_vote_percentage:.1f}%\n"
-        f"-------------------------------"
-    )
-print(winning_candidate_summary)
-# print (total_votes)
-# print(candidate_options)
-# print (candidate_votes)
-
-# file_write_path = os.path.join("Week 3","Asynchronous","py_poll","Analysis","election_analysis.txt")
-# outfile = open(file_write_path, "w")
-# outfile.write("Hello World")
-# with open(file_write_path,"w") as outfile:
-#         outfile.write("Counties in the election\n---------------------------------\nArapahoe\nDenver\nJefferson")
-    
+    # 
+        
