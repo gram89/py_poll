@@ -85,5 +85,16 @@ voting_data = [{"county":"Arapahoe", "registered_voters": 422829},
 # for i in range(len(voting_data)):
 #     print(voting_data[i])
 
-for county_dict in voting_data:
-    print (f"{county_dict['county']} county has {county_dict['registered_voters']} number of registered voters")
+# for county_dict in voting_data:
+#     print (f"{county_dict['county']} county has {county_dict['registered_voters']} number of registered voters")
+
+
+# import datetime as dt
+# now = dt.datetime.now()
+# print(f"The time right now is {now}")
+
+import csv
+print(dir(int))
+
+
+
