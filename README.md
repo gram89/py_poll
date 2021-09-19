@@ -25,7 +25,7 @@ The analysis of the elections show that
 - The winner of the election was
   - **Diana DeGette, who received 73.8% of the vote and 272,892 number of votes.**
 
-# Overview of the Election Audit Challenge
+## Overview of the Election Audit Challenge
 In addition to overall ask of the project which was outlined in the asynchronous module, the challenge was about extracting county information and providing the same to the Election Commission  
 1. The voter turnout for each county
 2. The percentage of votes from each county out of the total count
